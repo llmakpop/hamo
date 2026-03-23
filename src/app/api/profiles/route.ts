@@ -12,15 +12,19 @@ export async function POST(request: NextRequest) {
   if (body.user_type === 'influencer') {
     const result = influencerSchema.safeParse(body)
     if (!result.success) {
-      console.error('Validation errors:', JSON.stringify(result.error.flatten(), null, 2))
-      return NextResponse.json({ error: 'Invalid form data. Please check your entries.' }, { status: 400 })
+      const flat = result.error.flatten()
+      console.error('Validation errors:', JSON.stringify(flat, null, 2))
+      const fields = Object.keys(flat.fieldErrors).join(', ')
+      return NextResponse.json({ error: `Invalid fields: ${fields}` }, { status: 400 })
     }
     data = result.data
   } else if (body.user_type === 'marketer') {
     const result = marketerSchema.safeParse(body)
     if (!result.success) {
-      console.error('Validation errors:', JSON.stringify(result.error.flatten(), null, 2))
-      return NextResponse.json({ error: 'Invalid form data. Please check your entries.' }, { status: 400 })
+      const flat = result.error.flatten()
+      console.error('Validation errors:', JSON.stringify(flat, null, 2))
+      const fields = Object.keys(flat.fieldErrors).join(', ')
+      return NextResponse.json({ error: `Invalid fields: ${fields}` }, { status: 400 })
     }
     data = result.data
   } else {
