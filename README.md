@@ -4,13 +4,15 @@ A lightweight platform connecting B2B SaaS marketers with influencer opportuniti
 
 ## What It Does
 
-HAMO makes it easy for:
-- **Marketers** to discover and connect with B2B SaaS influencers, thought leaders, and content creators
-- **Influencers** to find relevant brand partnership opportunities in the B2B SaaS space
+- **Marketers** discover and connect with B2B SaaS influencers, thought leaders, and content creators
+- **Influencers** find relevant brand partnership opportunities in the B2B SaaS space
 
 ## Tech Stack
 
-> To be defined — see [docs/architecture.md](docs/architecture.md)
+- [Next.js](https://nextjs.org) (App Router, TypeScript)
+- [Supabase](https://supabase.com) (Postgres, Auth)
+- [Tailwind CSS](https://tailwindcss.com)
+- [Claude API](https://anthropic.com) (NL search)
 
 ## Getting Started
 
@@ -18,19 +20,31 @@ HAMO makes it easy for:
 # Install dependencies
 npm install
 
+# Copy env vars and fill in your keys
+cp .env.local.example .env.local
+
 # Start development server
 npm run dev
 ```
 
+Open [http://localhost:3000](http://localhost:3000).
+
 ## Project Structure
 
 ```
-hamo/
-├── docs/           # Architecture decisions and planning
-├── src/            # Application source code
-└── README.md
+src/
+├── app/
+│   ├── (marketing)/    # Landing page (public)
+│   ├── (auth)/         # /join onboarding, /set-password
+│   ├── (app)/          # Authenticated app (dashboard, search, profiles)
+│   └── api/            # Route handlers
+├── components/         # UI components
+└── lib/                # Supabase client, Claude search logic, Zod schemas
+supabase/
+└── migrations/         # SQL schema migrations
 ```
 
-## Contributing
+## Docs
 
-This project is in early development. Check [docs/roadmap.md](docs/roadmap.md) for planned features.
+- [Architecture](docs/architecture.md)
+- [Roadmap](docs/roadmap.md)
