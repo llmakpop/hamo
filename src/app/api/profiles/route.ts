@@ -12,13 +12,15 @@ export async function POST(request: NextRequest) {
   if (body.user_type === 'influencer') {
     const result = influencerSchema.safeParse(body)
     if (!result.success) {
-      return NextResponse.json({ error: result.error.flatten() }, { status: 400 })
+      console.error('Validation errors:', JSON.stringify(result.error.flatten(), null, 2))
+      return NextResponse.json({ error: 'Invalid form data. Please check your entries.' }, { status: 400 })
     }
     data = result.data
   } else if (body.user_type === 'marketer') {
     const result = marketerSchema.safeParse(body)
     if (!result.success) {
-      return NextResponse.json({ error: result.error.flatten() }, { status: 400 })
+      console.error('Validation errors:', JSON.stringify(result.error.flatten(), null, 2))
+      return NextResponse.json({ error: 'Invalid form data. Please check your entries.' }, { status: 400 })
     }
     data = result.data
   } else {
@@ -45,7 +47,7 @@ export async function POST(request: NextRequest) {
       )
     }
     console.error('Invite error:', inviteError)
-    return NextResponse.json({ error: 'Failed to send invite email.' }, { status: 500 })
+    return NextResponse.json({ error: `Invite failed: ${inviteError.message}` }, { status: 500 })
   }
 
   // Insert profile using the new auth user's ID

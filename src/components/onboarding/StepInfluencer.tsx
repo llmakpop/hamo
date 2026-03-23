@@ -41,6 +41,9 @@ export function StepInfluencer({ step, form, update, onBack, onNext }: StepInflu
               placeholder="I create content about B2B SaaS for a technical audience..."
               className="rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 placeholder-slate-400 focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-500/20 resize-none"
             />
+            <p className={`text-xs ${form.bio.length >= 20 ? 'text-slate-400' : 'text-amber-600'}`}>
+              {form.bio.length}/20 characters minimum
+            </p>
           </div>
           <Select
             label="Region"

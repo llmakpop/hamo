@@ -80,7 +80,7 @@ export function OnboardingShell({ initialType }: OnboardingShellProps) {
       })
       const data = await res.json()
       if (!res.ok) {
-        setSubmitError(data.error || 'Something went wrong. Please try again.')
+        setSubmitError(typeof data.error === 'string' ? data.error : 'Something went wrong. Please try again.')
         return
       }
       setStep('complete')

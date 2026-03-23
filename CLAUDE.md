@@ -13,6 +13,10 @@
 - **Claude API** (`@anthropic-ai/sdk`) — NL search query parsing
 - **Zod** — form and API validation
 
+## Next.js 16 Notes
+
+- Route protection file is `src/proxy.ts` (not `middleware.ts` — renamed in Next.js 16), export function as `proxy`
+
 ## User Types
 
 - **Marketer** — posts opportunities, searches/browses influencer profiles

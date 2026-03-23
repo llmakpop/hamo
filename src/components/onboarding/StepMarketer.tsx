@@ -93,6 +93,9 @@ export function StepMarketer({ step, form, update, onBack, onNext }: StepMarkete
             placeholder="We're looking for B2B fintech thought leaders with an audience of CFOs and finance leaders. Prefer LinkedIn + newsletter creators with 10K+ followers..."
             className="rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 placeholder-slate-400 focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-500/20 resize-none"
           />
+          <p className={`text-xs ${form.looking_for.length >= 20 ? 'text-slate-400' : 'text-amber-600'}`}>
+            {form.looking_for.length}/20 characters minimum
+          </p>
         </div>
         <Input
           label="Company website (optional)"
