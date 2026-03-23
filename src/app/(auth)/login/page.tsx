@@ -40,7 +40,7 @@ export default function LoginPage() {
 
     const supabase = createClient()
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/api/auth/callback`,
+      redirectTo: `${window.location.origin}/api/auth/callback`,
     })
 
     setLoading(false)
