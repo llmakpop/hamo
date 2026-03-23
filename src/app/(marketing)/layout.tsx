@@ -8,12 +8,17 @@ export default function MarketingLayout({ children }: { children: React.ReactNod
           <Link href="/" className="text-xl font-bold text-violet-600 tracking-tight">
             HAMO
           </Link>
-          <Link
-            href="/join"
-            className="rounded-lg bg-violet-600 px-4 py-2 text-sm font-medium text-white hover:bg-violet-700 transition-colors"
-          >
-            Join free
-          </Link>
+          <div className="flex items-center gap-3">
+            <Link href="/login" className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">
+              Sign in
+            </Link>
+            <Link
+              href="/join"
+              className="rounded-lg bg-violet-600 px-4 py-2 text-sm font-medium text-white hover:bg-violet-700 transition-colors"
+            >
+              Join free
+            </Link>
+          </div>
         </div>
       </header>
       <main>{children}</main>

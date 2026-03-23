@@ -31,6 +31,9 @@ export function StepEmail({ form, update, onBack, onSubmit, isSubmitting, error 
       {error && (
         <p className="mt-3 rounded-lg bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-700">
           {error}
+          {error.toLowerCase().includes('already') && (
+            <> <a href="/login" className="underline font-medium">Sign in instead →</a></>
+          )}
         </p>
       )}
       <div className="flex justify-between mt-8">
