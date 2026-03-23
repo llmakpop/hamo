@@ -7,9 +7,12 @@ export async function GET(request: NextRequest) {
 
   if (code) {
     const supabase = await createClient()
-    const { error } = await supabase.auth.exchangeCodeForSession(code)
+    const { data, error } = await supabase.auth.exchangeCodeForSession(code)
     if (!error) {
-      return NextResponse.redirect(`${origin}/set-password`)
+      // Both invite and password recovery land on set-password
+      const type = searchParams.get('type') ?? data.user?.app_metadata?.invite_type
+      const next = type === 'recovery' ? '/set-password' : '/set-password'
+      return NextResponse.redirect(`${origin}${next}`)
     }
   }
 
