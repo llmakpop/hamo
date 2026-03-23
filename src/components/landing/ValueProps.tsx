@@ -1,40 +1,28 @@
-const MARKETER_PROPS = [
-  'Find influencers by niche, region, platform, and audience size',
-  'Filter by industry and funding-stage fit',
-  'No bloated agency middlemen',
-]
-
-const INFLUENCER_PROPS = [
-  'Get discovered by B2B SaaS brands that match your niche',
-  'See what companies are actively looking for',
-  'Build your presence on a platform built for B2B',
+const USE_CASES = [
+  'Find influencers with the right audience',
+  'Source co-marketing partners with aligned positioning',
+  'Collaborate on content, events, or distribution',
+  'Build ecosystem relationships',
 ]
 
 export function ValueProps() {
   return (
     <section className="py-20 px-6">
-      <div className="max-w-5xl mx-auto grid grid-cols-1 gap-12 sm:grid-cols-2">
-        <div className="rounded-2xl border border-violet-200 bg-violet-50 p-8">
-          <div className="text-3xl mb-4">📣</div>
-          <h3 className="text-xl font-bold text-slate-900 mb-4">For Marketers</h3>
-          <ul className="flex flex-col gap-3">
-            {MARKETER_PROPS.map((prop) => (
-              <li key={prop} className="flex items-start gap-2 text-sm text-slate-700">
-                <span className="mt-0.5 text-violet-600 font-bold">✓</span>
-                {prop}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="rounded-2xl border border-slate-200 bg-white p-8">
-          <div className="text-3xl mb-4">🎤</div>
-          <h3 className="text-xl font-bold text-slate-900 mb-4">For Influencers</h3>
-          <ul className="flex flex-col gap-3">
-            {INFLUENCER_PROPS.map((prop) => (
-              <li key={prop} className="flex items-start gap-2 text-sm text-slate-700">
-                <span className="mt-0.5 text-violet-600 font-bold">✓</span>
-                {prop}
+      <div className="max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 gap-16 sm:grid-cols-2 items-center">
+          <div>
+            <h2 className="text-2xl font-semibold text-neutral-900 mb-4 leading-snug">
+              Built for marketers who know what they need
+            </h2>
+            <p className="text-neutral-500 text-base leading-relaxed">
+              HAMO isn't a marketplace with fees or a bloated platform to manage. It's a simple, fast way to surface the right partnerships — by sharing exactly what you're looking for.
+            </p>
+          </div>
+          <ul className="flex flex-col gap-4">
+            {USE_CASES.map((uc) => (
+              <li key={uc} className="flex items-start gap-3 text-sm text-neutral-700">
+                <span className="mt-0.5 text-violet-500 font-bold flex-shrink-0">→</span>
+                {uc}
               </li>
             ))}
           </ul>
